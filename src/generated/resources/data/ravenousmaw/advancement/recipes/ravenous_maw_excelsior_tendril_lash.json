@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_minecraft:angler_pottery_sherd": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:angler_pottery_sherd"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "ravenousmaw:ravenous_maw_excelsior_tendril_lash"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_minecraft:angler_pottery_sherd"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "ravenousmaw:ravenous_maw_excelsior_tendril_lash"
+    ]
+  }
+}

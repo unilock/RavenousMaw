@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "R": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "S": {
+      "item": "minecraft:slime_ball"
+    }
+  },
+  "pattern": [
+    "RSR",
+    "SDS",
+    "RSR"
+  ],
+  "result": {
+    "count": 1,
+    "id": "ravenousmaw:contamination_core"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Mutations",
+  "description": "Mutations can be seen as upgrades to the Ravenous Maw. All mutations below the Excelsior Stage have an instability that can be occasionally triggered. Most Mutations gradually strengthen with higher stages. In the Excelsior Stage, all instabilities are inactive.",
+  "icon": "minecraft:nether_star",
+  "sortnum": 2
+}

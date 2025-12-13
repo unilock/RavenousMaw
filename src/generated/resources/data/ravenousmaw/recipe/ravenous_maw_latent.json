@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bone"
+    },
+    "C": {
+      "item": "ravenousmaw:contamination_core"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "T": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "CSC",
+    " B ",
+    " T "
+  ],
+  "result": {
+    "count": 1,
+    "id": "ravenousmaw:ravenous_maw_latent"
+  }
+}

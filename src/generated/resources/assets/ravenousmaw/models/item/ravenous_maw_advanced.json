@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "ravenousmaw:item/ravenous_maw_advanced"
+  }
+}

@@ -1,0 +1,113 @@
+package net.rywir.ravenousmaw.datagen.provider;
+
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.rywir.ravenousmaw.RavenousMaw;
+import net.rywir.ravenousmaw.registry.RavenousItems;
+import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+
+public class RavenousItemTagsProvider extends ItemTagsProvider {
+    public static final TagKey<Item> FEAST = ItemTags.create(ResourceLocation.fromNamespaceAndPath(RavenousMaw.MOD_ID, "feast"));
+    public static final TagKey<Item> PAXEL = ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "paxel"));
+    public static final TagKey<Item> MUTAGEN = ItemTags.create(ResourceLocation.fromNamespaceAndPath(RavenousMaw.MOD_ID, "mutagen"));
+    public static final TagKey<Item> MAW = ItemTags.create(ResourceLocation.fromNamespaceAndPath(RavenousMaw.MOD_ID, "maw"));
+
+    public RavenousItemTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, lookupProvider, blockTags, RavenousMaw.MOD_ID, existingFileHelper);
+    }
+
+    @Override
+    protected void addTags(HolderLookup.@NotNull Provider provider) {
+        this.tag(Tags.Items.TOOLS)
+            .add(RavenousItems.RAVENOUS_MAW_LATENT.get())
+            .add(RavenousItems.RAVENOUS_MAW_ADVANCED.get())
+            .add(RavenousItems.RAVENOUS_MAW_NOBLE.get())
+            .add(RavenousItems.RAVENOUS_MAW_EXCELSIOR.get());
+
+        this.tag(Tags.Items.MELEE_WEAPON_TOOLS)
+            .add(RavenousItems.RAVENOUS_MAW_LATENT.get())
+            .add(RavenousItems.RAVENOUS_MAW_ADVANCED.get())
+            .add(RavenousItems.RAVENOUS_MAW_NOBLE.get())
+            .add(RavenousItems.RAVENOUS_MAW_EXCELSIOR.get());
+
+        this.tag(ItemTags.SHARP_WEAPON_ENCHANTABLE)
+            .add(RavenousItems.RAVENOUS_MAW_LATENT.get())
+            .add(RavenousItems.RAVENOUS_MAW_ADVANCED.get())
+            .add(RavenousItems.RAVENOUS_MAW_NOBLE.get())
+            .add(RavenousItems.RAVENOUS_MAW_EXCELSIOR.get());
+
+        this.tag(ItemTags.BREAKS_DECORATED_POTS)
+            .add(RavenousItems.RAVENOUS_MAW_LATENT.get())
+            .add(RavenousItems.RAVENOUS_MAW_ADVANCED.get())
+            .add(RavenousItems.RAVENOUS_MAW_NOBLE.get())
+            .add(RavenousItems.RAVENOUS_MAW_EXCELSIOR.get());
+
+        this.tag(MAW)
+            .add(RavenousItems.RAVENOUS_MAW_LATENT.get())
+            .add(RavenousItems.RAVENOUS_MAW_ADVANCED.get())
+            .add(RavenousItems.RAVENOUS_MAW_NOBLE.get())
+            .add(RavenousItems.RAVENOUS_MAW_EXCELSIOR.get());
+
+        this.tag(MUTAGEN)
+            .add(Items.STICKY_PISTON)
+            .add(Items.MAGMA_CREAM)
+            .add(Items.ENCHANTED_GOLDEN_APPLE)
+            .add(Items.TOTEM_OF_UNDYING)
+            .add(Items.PUFFERFISH)
+            .add(Items.ANGLER_POTTERY_SHERD)
+            .add(Items.GHAST_TEAR)
+            .add(Items.TORCHFLOWER_SEEDS)
+            .add(Items.DRAGON_BREATH)
+            .add(Items.NETHER_STAR);
+
+        this.tag(FEAST)
+            .add(Items.ROTTEN_FLESH)
+            .add(RavenousItems.PIGLIN_PIE.get())
+            .add(RavenousItems.CHORUS_CRACKER.get())
+            .add(RavenousItems.SCULK_CRONUT.get());
+
+        this.tag(ItemTags.SWORD_ENCHANTABLE)
+            .add(RavenousItems.RAVENOUS_MAW_LATENT.get())
+            .add(RavenousItems.RAVENOUS_MAW_ADVANCED.get())
+            .add(RavenousItems.RAVENOUS_MAW_NOBLE.get())
+            .add(RavenousItems.RAVENOUS_MAW_EXCELSIOR.get());
+
+        this.tag(ItemTags.MINING_ENCHANTABLE)
+            .add(RavenousItems.RAVENOUS_MAW_LATENT.get())
+            .add(RavenousItems.RAVENOUS_MAW_ADVANCED.get())
+            .add(RavenousItems.RAVENOUS_MAW_NOBLE.get())
+            .add(RavenousItems.RAVENOUS_MAW_EXCELSIOR.get());
+
+        this.tag(ItemTags.MINING_LOOT_ENCHANTABLE)
+            .add(RavenousItems.RAVENOUS_MAW_LATENT.get())
+            .add(RavenousItems.RAVENOUS_MAW_ADVANCED.get())
+            .add(RavenousItems.RAVENOUS_MAW_NOBLE.get())
+            .add(RavenousItems.RAVENOUS_MAW_EXCELSIOR.get());
+
+        this.tag(ItemTags.DURABILITY_ENCHANTABLE)
+            .add(RavenousItems.RAVENOUS_MAW_LATENT.get())
+            .add(RavenousItems.RAVENOUS_MAW_ADVANCED.get())
+            .add(RavenousItems.RAVENOUS_MAW_NOBLE.get())
+            .add(RavenousItems.RAVENOUS_MAW_EXCELSIOR.get());
+
+        this.tag(ItemTags.WEAPON_ENCHANTABLE)
+            .add(RavenousItems.RAVENOUS_MAW_LATENT.get())
+            .add(RavenousItems.RAVENOUS_MAW_ADVANCED.get())
+            .add(RavenousItems.RAVENOUS_MAW_NOBLE.get())
+            .add(RavenousItems.RAVENOUS_MAW_EXCELSIOR.get());
+
+        this.tag(PAXEL);
+    }
+}

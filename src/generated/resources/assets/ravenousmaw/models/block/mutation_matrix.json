@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "ravenousmaw:block/mutation_matrix_bottom",
+    "side": "ravenousmaw:block/mutation_matrix_side",
+    "top": "ravenousmaw:block/mutation_matrix_top"
+  }
+}

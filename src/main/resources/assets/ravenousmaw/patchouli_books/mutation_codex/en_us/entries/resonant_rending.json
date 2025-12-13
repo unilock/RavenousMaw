@@ -1,0 +1,21 @@
+{
+  "name": "Resonant Rending",
+  "icon": "minecraft:ghast_tear",
+  "category": "ravenousmaw:mutations",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "minecraft:ghast_tear"
+      },
+      "text": "Resonant Rending allows Ravenous Maw to deal maximum health percentage damage."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": {
+        "item": "ravenousmaw:sculk_cronut"
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "ravenousmaw:mutation_recipe_serializer",
+  "base": {
+    "item": "ravenousmaw:ravenous_maw_noble"
+  },
+  "feast": {
+    "item": "ravenousmaw:piglin_pie"
+  },
+  "mutagen": {
+    "item": "minecraft:enchanted_golden_apple"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "stage.ravenousmaw.latent_stage": "Latent",
+  "stage.ravenousmaw.advanced_stage": "Advanced",
+  "stage.ravenousmaw.noble_stage": "Noble",
+  "stage.ravenousmaw.excelsior_stage": "Excelsior",
+
+  "block.ravenousmaw.mutation_matrix": "Mutation Matrix",
+  "mutation_matrix_menu_title": "Mutation Matrix",
+
+  "mutation.ravenousmaw.tectonic_bite": "Tectonic Bite",
+  "mutation.ravenousmaw.combustive_enzyme": "Combustive Enzyme",
+  "mutation.ravenousmaw.insatiable_voracity": "Insatiable Voracity",
+  "mutation.ravenousmaw.undying_flesh": "Undying Flesh",
+  "mutation.ravenousmaw.symbiotic_aid": "Symbiotic Aid",
+  "mutation.ravenousmaw.tendril_lash": "Tendril Lash",
+  "mutation.ravenousmaw.resonant_rending": "Resonant Rending",
+  "mutation.ravenousmaw.arcane_hypertrophy": "Arcane Hypertrophy",
+  "mutation.ravenousmaw.indomitable_will": "Indomitable Will",
+  "mutation.ravenousmaw.adaptive_shift": "Adaptive Shift",
+
+  "creativetab.ravenousmaw.ravenous_tab": "Ravenous Maw",
+
+  "item.ravenousmaw.piglin_pie": "Piglin Pie",
+  "item.ravenousmaw.chorus_cracker": "Chorus Cracker",
+  "item.ravenousmaw.sculk_cronut": "Sculk Croissant",
+
+  "item.ravenousmaw.contamination_core": "Contamination Core",
+  "item.ravenousmaw.mutation_codex": "Mutation Codex",
+
+  "ravenousmaw.maw_threshold_message": "The Ravenous Maw refuses to work in order to survive! (Feed the beast!)",
+
+  "item.ravenousmaw.ravenous_maw_latent": "Ravenous Maw: Latent",
+  "item.ravenousmaw.ravenous_maw_advanced": "Ravenous Maw: Advanced",
+  "item.ravenousmaw.ravenous_maw_noble": "Ravenous Maw: Noble",
+  "item.ravenousmaw.ravenous_maw_excelsior": "Ravenous Maw: Excelsior",
+
+  "effect.ravenousmaw.combustive": "Combustive",
+  "effect.ravenousmaw.symbiotic_infection": "Symbiotic Infection",
+
+  "instability_message.ravenousmaw.undying_flesh": "The Ravenous Maw is tired...",
+  "instability_message.ravenousmaw.tendril_lash": "The Ravenous Maw jumped to your other hand!",
+  "instability_message.ravenousmaw.symbiotic_aid": "The Ravenous Maw pukes negative effects!",
+  "instability_message.ravenousmaw.insatiable_voracity": "The Ravenous Maw releases harmful effects!",
+  "instability_message.ravenousmaw.combustive_enzyme": "The Ravenous Maw drooled some combustive saliva on you!",
+
+  "configuration_menu_string.ravenousmaw.loot": "Loot",
+  "configuration_menu_string.ravenousmaw.silk_touch": "Silk Touch",
+  "configuration_menu_string.ravenousmaw.area": "Tectonic Area",
+  "configuration_menu_string.ravenousmaw.unavailable": "Unavailable",
+  "configuration_menu_string.ravenousmaw.active": "Active",
+  "configuration_menu_string.ravenousmaw.inactive": "Inactive",
+
+  "tooltip.ravenousmaw.shift": "Press Shift to see upgrades",
+
+  "maw.ravenousmaw.stage_string": "Stage",
+  "maw.ravenousmaw.mutation_string": "Mutations",
+  "maw.ravenousmaw.configuration_string": "Configuration",
+
+  "stage.ravenousmaw.latent": "Latent",
+  "stage.ravenousmaw.advanced": "Advanced",
+  "stage.ravenousmaw.noble": "Noble",
+  "stage.ravenousmaw.excelsior": "Excelsior",
+
+  "jei.ravenousmaw.feeding": "Maw Feeding"
+}
