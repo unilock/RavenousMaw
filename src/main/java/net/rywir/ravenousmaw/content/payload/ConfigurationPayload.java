@@ -6,13 +6,19 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.rywir.ravenousmaw.RavenousMaw;
+import net.rywir.ravenousmaw.util.dstruct.ConfigAction;
 
-public record ConfigurationPayload(int buttonId) implements CustomPacketPayload {
-    public static final Type<ConfigurationPayload> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(RavenousMaw.MOD_ID, "configuration_sync"));
+public record ConfigurationPayload(String paramkey, ConfigAction action) implements CustomPacketPayload {
+    public static final Type<ConfigurationPayload> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(RavenousMaw.MOD_ID, "configuration_change"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, ConfigurationPayload> STREAM_CODEC =
         StreamCodec.composite(
-            ByteBufCodecs.INT, ConfigurationPayload::buttonId,
+            ByteBufCodecs.STRING_UTF8, ConfigurationPayload::paramkey,
+            ByteBufCodecs.idMapper(
+                i -> ConfigAction.values()[i],
+                ConfigAction::ordinal
+            ),
+            ConfigurationPayload::action,
             ConfigurationPayload::new
         );
 

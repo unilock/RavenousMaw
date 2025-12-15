@@ -39,7 +39,7 @@ public class RavenousBreakEvent {
             return;
         }
 
-        int range = mutationHandler.getConfigVal(Mutations.TECTONIC_BITE);
+        int range = mutationHandler.getConfigVal(Mutations.Parameters.TECTONIC_AREA);
 
         if (range <= 1) {
             return;

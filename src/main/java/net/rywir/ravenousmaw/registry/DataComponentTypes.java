@@ -1,12 +1,13 @@
 package net.rywir.ravenousmaw.registry;
 
+import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.rywir.ravenousmaw.RavenousMaw;
-import net.rywir.ravenousmaw.content.component.AdaptiveShiftComponent;
 import net.rywir.ravenousmaw.content.component.MutationComponent;
 
 public class DataComponentTypes {
@@ -18,10 +19,10 @@ public class DataComponentTypes {
             .networkSynchronized(MutationComponent.STREAM_CODEC)
             .build());
 
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<AdaptiveShiftComponent>> ADAPTIVE_SHIFT_COMPONENT_TYPE = DATA_COMPONENT_TYPES.register("adaptive_shift_component",
-        () -> DataComponentType.<AdaptiveShiftComponent>builder()
-            .persistent(AdaptiveShiftComponent.CODEC)
-            .networkSynchronized(AdaptiveShiftComponent.STREAM_CODEC)
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> VORACITY_COMPONENT_TYPE = DATA_COMPONENT_TYPES.register("voracity_component",
+        () -> DataComponentType.<Integer>builder()
+            .persistent(Codec.INT)
+            .networkSynchronized(ByteBufCodecs.VAR_INT)
             .build());
 
     public static void register(IEventBus eventBus) {

@@ -13,16 +13,16 @@ import net.rywir.ravenousmaw.system.interfaces.IMutationAbility;
 public class AbilityDispatcher implements IMutationAbility {
     @Override
     public void onAttack(ItemStack stack, LivingEntity target, Level level) {
-        Mutations.COMBUSTIVE_ENZYME.getAbility().onAttack(stack, target, level);
+        Mutations.COMBUSTIVE_ENZYME.ability().onAttack(stack, target, level);
     }
 
     @Override
     public float getAttackDamageBonus(MutationHandler handler, ItemStack stack, LivingEntity target, Level level, Stages stage) {
-        float combustionBonus = Mutations.COMBUSTIVE_ENZYME.getAbility().getAttackDamageBonus(handler, stack, target, level, stage);
-        float rendingBonus = Mutations.RESONANT_RENDING.getAbility().getAttackDamageBonus(handler, stack, target, level, stage);
-        float voracityBonus = Mutations.INSATIABLE_VORACITY.getAbility().getAttackDamageBonus(handler, stack, target, level, stage);
-        float adaptiveMultiplier = Mutations.ADAPTIVE_SHIFT.getAbility().getAttackDamageBonus(handler, stack, target, level, stage);
-        float arcaneBonus = Mutations.ARCANE_HYPERTROPHY.getAbility().getAttackDamageBonus(handler, stack, target, level, stage);
+        float combustionBonus = Mutations.COMBUSTIVE_ENZYME.ability().getAttackDamageBonus(handler, stack, target, level, stage);
+        float rendingBonus = Mutations.RESONANT_RENDING.ability().getAttackDamageBonus(handler, stack, target, level, stage);
+        float voracityBonus = Mutations.INSATIABLE_VORACITY.ability().getAttackDamageBonus(handler, stack, target, level, stage);
+        float adaptiveMultiplier = Mutations.ADAPTIVE_SHIFT.ability().getAttackDamageBonus(handler, stack, target, level, stage);
+        float arcaneBonus = Mutations.ARCANE_HYPERTROPHY.ability().getAttackDamageBonus(handler, stack, target, level, stage);
 
         float bonus = (combustionBonus + rendingBonus + voracityBonus) * adaptiveMultiplier;
 

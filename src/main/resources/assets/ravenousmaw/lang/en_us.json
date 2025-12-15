@@ -47,8 +47,8 @@
   "configuration_menu_string.ravenousmaw.silk_touch": "Silk Touch",
   "configuration_menu_string.ravenousmaw.area": "Tectonic Area",
   "configuration_menu_string.ravenousmaw.unavailable": "Unavailable",
-  "configuration_menu_string.ravenousmaw.active": "Active",
-  "configuration_menu_string.ravenousmaw.inactive": "Inactive",
+  "screen.ravenousmaw.active": "Active",
+  "screen.ravenousmaw.inactive": "Inactive",
 
   "tooltip.ravenousmaw.shift": "Press Shift to see upgrades",
 
@@ -68,5 +68,23 @@
   "dialogue.ravenousmaw.latent": "RmVlZCBtZSBtb3J0YWwh",
   "dialogue.ravenousmaw.advanced": "From a builder, teach bWF3 speak-hows!",
   "dialogue.ravenousmaw.noble": "I have finally become able to communicate with you.",
-  "dialogue.ravenousmaw.excelsior": "When will you gonna feed me?"
+  "dialogue.ravenousmaw.excelsior": "When will you gonna feed me?",
+
+  "parameter.ravenousmaw.tectonic_area": "Tectonic Area",
+  "parameter.ravenousmaw.symbiotic_immunity": "Symbiotic Immunity",
+  "parameter.ravenousmaw.silky_fang": "Silky Fang",
+  "parameter.ravenousmaw.binge_eater": "Binge Eater",
+  "parameter.ravenousmaw.excavation_haste": "Excavation Haste",
+  "parameter.ravenousmaw.dexterous_touch": "Dexterous Touch",
+  "parameter.ravenousmaw.living_projectile": "Living Projectile",
+  "parameter.ravenousmaw.blind_scavenger": "Blind Scavenger",
+
+  "description.ravenousmaw.tectonic_area": "Digging area size",
+  "description.ravenousmaw.symbiotic_immunity": "Remove harmful effects?",
+  "description.ravenousmaw.silky_fang": "Shift to Silk Touch?",
+  "description.ravenousmaw.excavation_haste": "Digging speed modifier",
+  "description.ravenousmaw.dexterous_touch": "Wrench mode active?",
+  "description.ravenousmaw.living_projectile": "Homing projectiles? (slower)",
+  "description.ravenousmaw.blind_scavenger": "Exchange damage with loots?"
+
 }

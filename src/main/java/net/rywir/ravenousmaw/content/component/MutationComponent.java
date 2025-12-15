@@ -7,26 +7,52 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import java.util.HashMap;
 
-public record MutationComponent(ImmutableMap<String, Integer> mutations) {
-    public static final MutationComponent EMPTY = new MutationComponent(ImmutableMap.of());
-
+public record MutationComponent(ImmutableMap<String, ConfigurationComponent> mutmap) {
     public static final Codec<MutationComponent> CODEC;
     public static final StreamCodec<ByteBuf, MutationComponent> STREAM_CODEC;
 
+    private MutationComponent() {
+        this(ImmutableMap.of());
+    }
+
+    public static MutationComponent EMPTY = new MutationComponent();
+
     static {
-        CODEC = Codec.unboundedMap(Codec.STRING, Codec.INT)
+        CODEC = Codec.unboundedMap(Codec.STRING, ConfigurationComponent.CODEC)
             .xmap(
                 map -> new MutationComponent(ImmutableMap.copyOf(map)),
-                MutationComponent::mutations
+                MutationComponent::mutmap
             );
 
         STREAM_CODEC = ByteBufCodecs.map(
             HashMap::new,
             ByteBufCodecs.STRING_UTF8,
-            ByteBufCodecs.VAR_INT
+            ConfigurationComponent.STREAM_CODEC
         ).map(
             map -> new MutationComponent(ImmutableMap.copyOf(map)),
-            comp -> new HashMap<>(comp.mutations())
+            comp -> new HashMap<>(comp.mutmap)
         );
+    }
+
+    public record ConfigurationComponent(ImmutableMap<String, Integer> confmap) {
+        public static final Codec<ConfigurationComponent> CODEC;
+        public static final StreamCodec<ByteBuf, ConfigurationComponent> STREAM_CODEC;
+
+        static {
+            CODEC = Codec.unboundedMap(Codec.STRING, Codec.INT)
+                .xmap(
+                    map -> new ConfigurationComponent(ImmutableMap.copyOf(map)),
+                    ConfigurationComponent::confmap
+                );
+
+            STREAM_CODEC = ByteBufCodecs.map(
+                HashMap::new,
+                ByteBufCodecs.STRING_UTF8,
+                ByteBufCodecs.VAR_INT
+            ).map(
+                map -> new ConfigurationComponent(ImmutableMap.copyOf(map)),
+                comp -> new HashMap<>(comp.confmap)
+            );
+        }
     }
 }

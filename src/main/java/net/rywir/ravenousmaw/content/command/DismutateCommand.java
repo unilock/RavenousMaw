@@ -22,7 +22,7 @@ public class DismutateCommand {
                     .then(Commands.argument("mutation", StringArgumentType.string())
                         .suggests((context, builder) -> {
                             for (var mut : Mutations.values()) {
-                                builder.suggest(mut.getKey());
+                                builder.suggest(mut.key());
                             }
                             return builder.buildFuture();
                         })

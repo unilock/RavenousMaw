@@ -35,6 +35,12 @@ public class RavenousMobEffectAddedEvent {
             return;
         }
 
+        int isImmunityActive = handler.getConfigVal(Mutations.Parameters.SYMBIOTIC_IMMUNITY);
+
+        if (isImmunityActive == 0) {
+            return;
+        }
+
         Holder<MobEffect> effect = event.getEffectInstance().getEffect();
 
         MobEffect instance = effect.value();

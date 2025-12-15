@@ -10,6 +10,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.rywir.ravenousmaw.registry.DataComponentTypes;
 import net.rywir.ravenousmaw.registry.Mutations;
 import net.rywir.ravenousmaw.registry.Stages;
 import net.rywir.ravenousmaw.system.MutationHandler;
@@ -33,10 +34,18 @@ public class InsatiableVoracity implements IMutationAbility {
             default -> 0.0F;
         };
 
-        float numberOfKills = handler.getConfigVal(Mutations.INSATIABLE_VORACITY);
+        float numberOfKills = handler.getKills();
+        return (numberOfKills) * multiplier;
+    }
 
-        // since all configurations start at 1
-        return (numberOfKills - 1) * multiplier;
+    @Override
+    public void onCraft(ItemStack stack) {
+        stack.set(DataComponentTypes.VORACITY_COMPONENT_TYPE, 0);
+    }
+
+    @Override
+    public void decraft(ItemStack stack) {
+        stack.remove(DataComponentTypes.VORACITY_COMPONENT_TYPE);
     }
 
     @Override

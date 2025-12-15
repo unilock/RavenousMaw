@@ -5,11 +5,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
-import net.rywir.ravenousmaw.content.component.AdaptiveShiftComponent;
-import net.rywir.ravenousmaw.registry.DataComponentTypes;
 import net.rywir.ravenousmaw.registry.Mutations;
 import net.rywir.ravenousmaw.registry.Stages;
-import net.rywir.ravenousmaw.system.AdaptiveShiftHandler;
 import net.rywir.ravenousmaw.system.EnchantmentHandler;
 import net.rywir.ravenousmaw.system.MutationHandler;
 import net.rywir.ravenousmaw.system.interfaces.IMutationAbility;
@@ -26,26 +23,16 @@ public class AdaptiveShift implements IMutationAbility {
             return standard;
         }
 
-        AdaptiveShiftHandler adaptiveShiftHandler = new AdaptiveShiftHandler(stack);
+        int isDamageMultiplierActivated = mutationHandler.getConfigVal(Mutations.Parameters.BLIND_SCAVENGER);
 
-        boolean isDamageMultiplierActivated = adaptiveShiftHandler.getConfigBool(Mutations.Parameters.LOOT);
-
-        if (isDamageMultiplierActivated) {
+        if (isDamageMultiplierActivated == 1) {
             return multiplier;
         } else {
             return standard;
         }
     }
 
-    @Override
-    public void onCraft(ItemStack stack) {
-        stack.set(DataComponentTypes.ADAPTIVE_SHIFT_COMPONENT_TYPE, AdaptiveShiftComponent.generateDefaultInstance());
-    }
 
-    @Override
-    public void decraft(ItemStack stack) {
-        stack.remove(DataComponentTypes.ADAPTIVE_SHIFT_COMPONENT_TYPE);
-    }
 
     @Override
     public void onUpdate(ItemStack stack, Level level) {
@@ -56,13 +43,11 @@ public class AdaptiveShift implements IMutationAbility {
             return;
         }
 
-        AdaptiveShiftHandler handler = new AdaptiveShiftHandler(stack);
-
-        boolean isSilkTouchActivated = handler.getConfigBool(Mutations.Parameters.SILK_TOUCH);
+        int isSilkTouchActivated = mutationHandler.getConfigVal(Mutations.Parameters.SILKY_FANG);
 
         EnchantmentHandler enchantmentHandler = new EnchantmentHandler(stack);
 
-        if (isSilkTouchActivated) {
+        if (isSilkTouchActivated == 1) {
             enchantmentHandler.without(Enchantments.FORTUNE, level);
             enchantmentHandler.with(Enchantments.SILK_TOUCH, 1, level);
         } else {
@@ -75,6 +60,6 @@ public class AdaptiveShift implements IMutationAbility {
     public boolean isMutatable(ItemStack stack, Level level) {
         EnchantmentHandler handler = new EnchantmentHandler(stack);
 
-        return handler.hasMaxedOut(Enchantments.FORTUNE, level) || handler.hasMaxedOut(Enchantments.SILK_TOUCH, level);
+        return handler.hasMaxedOut(Enchantments.SILK_TOUCH, level);
     }
 }

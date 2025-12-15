@@ -10,7 +10,6 @@ import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.rywir.ravenousmaw.RavenousMaw;
 import net.rywir.ravenousmaw.datagen.provider.RavenousItemTagsProvider;
 import net.rywir.ravenousmaw.registry.Mutations;
-import net.rywir.ravenousmaw.system.AdaptiveShiftHandler;
 import net.rywir.ravenousmaw.system.EnchantmentHandler;
 import net.rywir.ravenousmaw.system.MutationHandler;
 
@@ -43,10 +42,9 @@ public class RavenousLivingDropsEvent {
         }
 
         if (hasAdaptiveShift) {
-            AdaptiveShiftHandler adaptiveShiftHandler = new AdaptiveShiftHandler(stack);
-            boolean isLootAllowed = adaptiveShiftHandler.getConfigBool(Mutations.Parameters.LOOT);
+            int isLootAllowed = mutationHandler.getConfigVal(Mutations.Parameters.BLIND_SCAVENGER);
 
-            if (!isLootAllowed) {
+            if (isLootAllowed == 0) {
                 event.getDrops().clear();
                 return;
             }

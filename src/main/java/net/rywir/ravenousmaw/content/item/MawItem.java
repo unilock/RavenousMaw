@@ -83,7 +83,7 @@ public class MawItem extends Item {
 
         // Tectonic Bite instability
         if (hasTectonicBite) {
-            int range = mutationHandler.getConfigVal(Mutations.TECTONIC_BITE);
+            int range = mutationHandler.getConfigVal(Mutations.Parameters.TECTONIC_AREA);
 
             StageHandler stageHandler = new StageHandler(stack);
             Stages stage = stageHandler.getStage();
@@ -91,8 +91,16 @@ public class MawItem extends Item {
             boolean isExcelsior = stage == Stages.EXCELSIOR;
 
             if (!isExcelsior && range != 1) {
-                divider = range / 2;
+                divider = range;
             }
+        }
+
+        boolean hasAdaptiveShift = mutationHandler.has(Mutations.ADAPTIVE_SHIFT);
+        if (hasAdaptiveShift) {
+            int haste = mutationHandler.getConfigVal(Mutations.Parameters.EXCAVATION_HASTE);
+
+            double multiplier = haste / 10.0;
+            divider /= multiplier;
         }
 
         return tool.getMiningSpeed(state) / divider;
@@ -228,7 +236,7 @@ public class MawItem extends Item {
             Random random = new Random();
             int index = random.nextInt(muts.size());
 
-            muts.get(index).getAbility().onInstability(handler, stack, player);
+            muts.get(index).ability().onInstability(handler, stack, player);
             tickCounter = 0;
         }
     }

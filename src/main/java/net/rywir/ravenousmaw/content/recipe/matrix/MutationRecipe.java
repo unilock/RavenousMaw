@@ -45,14 +45,14 @@ public class MutationRecipe implements Recipe<MutationRecipeInput> {
         }
 
         if (input.base().getItem() instanceof MawItem maw) {
-            if (maw.getStage().getId() < target.getStage().getId()) {
+            if (maw.getStage().getId() < target.stage().getId()) {
                 return false;
             }
         } else {
             return false;
         }
 
-        boolean isMutatable = target.getAbility().isMutatable(input.base(), level);
+        boolean isMutatable = target.ability().isMutatable(input.base(), level);
 
         if (!isMutatable) return false;
 
@@ -69,7 +69,7 @@ public class MutationRecipe implements Recipe<MutationRecipeInput> {
 
         mutationHandler.add(target);
 
-        target.getAbility().onCraft(mutationHandler.getStack());
+        target.ability().onCraft(mutationHandler.getStack());
 
         return mutationHandler.getStack();
     }
@@ -85,7 +85,7 @@ public class MutationRecipe implements Recipe<MutationRecipeInput> {
         MutationHandler handler = new MutationHandler(baseStack);
         handler.add(target);
 
-        target.getAbility().onCraft(handler.getStack());
+        target.ability().onCraft(handler.getStack());
 
         return handler.getStack();
     }

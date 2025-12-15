@@ -57,7 +57,7 @@ public class StageHandler {
         transferCustomItemData(newMaw);
 
         for (Mutations mutation : Mutations.values()) {
-            mutation.getAbility().onUpdate(newMaw, null);
+            mutation.ability().onUpdate(newMaw, null);
         }
 
         return newMaw;

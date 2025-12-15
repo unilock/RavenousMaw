@@ -33,8 +33,7 @@ public class RavenousLivingDeathEvent {
         boolean hasVoracity = mutationHandler.has(voracity);
 
         if (hasVoracity) {
-            int value = mutationHandler.getConfigVal(voracity);
-            mutationHandler.configure(voracity, value + 1);
+            mutationHandler.increaseKill();
         }
 
         if (!Stages.getOBJECTIVES().contains(type)) {
@@ -57,7 +56,7 @@ public class RavenousLivingDeathEvent {
         player.setItemSlot(EquipmentSlot.MAINHAND, newMaw);
 
         for (Mutations mutation : Mutations.values()) {
-            mutation.getAbility().onUpdate(newMaw, player.level());
+            mutation.ability().onUpdate(newMaw, player.level());
         }
     }
 }

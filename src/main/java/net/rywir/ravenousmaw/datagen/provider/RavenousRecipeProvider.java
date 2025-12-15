@@ -106,18 +106,18 @@ public class RavenousRecipeProvider extends RecipeProvider implements ICondition
                     continue;
                 }
 
-                if (!(mutation.getStage().getId() <= ((MawItem) mawHolder.get()).getStage().getId())) {
+                if (!(mutation.stage().getId() <= ((MawItem) mawHolder.get()).getStage().getId())) {
                     continue;
                 }
 
                 String recipeId = mawHolder.getId().getPath() + "_" + mutation.name().toLowerCase();
-                Item mutagenItem = mutation.getMutagen();
+                Item mutagenItem = mutation.mutagen();
                 String unlockCriterionName = "has_" + mutagenItem.getDefaultInstance().getItem().toString().toLowerCase();
 
                 MutationRecipeBuilder.mutation(
                     Ingredient.of(mawHolder.get()),
-                    Ingredient.of(mutation.getStage().getFeast()),
-                    Ingredient.of(mutation.getMutagen())
+                    Ingredient.of(mutation.stage().getFeast()),
+                    Ingredient.of(mutation.mutagen())
                 ).unlockedBy(unlockCriterionName, has(mutagenItem)).save(output, ResourceLocation.fromNamespaceAndPath(RavenousMaw.MOD_ID, recipeId));
             }
         }
