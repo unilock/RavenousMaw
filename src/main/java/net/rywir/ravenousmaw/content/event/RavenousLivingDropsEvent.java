@@ -42,7 +42,7 @@ public class RavenousLivingDropsEvent {
         }
 
         if (hasAdaptiveShift) {
-            int isLootAllowed = mutationHandler.getConfigVal(Mutations.Parameters.BLIND_SCAVENGER);
+            int isLootAllowed = mutationHandler.getConfigVal(Mutations.Parameters.RECKLESS_DEVOURER);
 
             if (isLootAllowed == 0) {
                 event.getDrops().clear();

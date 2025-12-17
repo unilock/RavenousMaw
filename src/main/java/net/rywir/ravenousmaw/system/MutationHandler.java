@@ -13,7 +13,7 @@ import java.util.*;
 
 public class MutationHandler {
     private final ItemStack stack;
-    private final ImmutableMap<String, MutationComponent.ConfigurationComponent> mutmap;
+    private ImmutableMap<String, MutationComponent.ConfigurationComponent> mutmap;
     private static final int DEFAULT_VALUE = 1;
 
     public MutationHandler(ItemStack stack) {
@@ -43,6 +43,8 @@ public class MutationHandler {
         Map<String, MutationComponent.ConfigurationComponent> pseudoMutmap = new HashMap<>(mutmap);
         pseudoMutmap.put(mutation.key(), new MutationComponent.ConfigurationComponent(ImmutableMap.copyOf(pseudoConfmap)));
         stack.set(DataComponentTypes.MUTATION_COMPONENT_TYPE, new MutationComponent(ImmutableMap.copyOf(pseudoMutmap)));
+
+        updateMap();
     }
 
     public void addWithCraft(Mutations mutation) {
@@ -60,6 +62,8 @@ public class MutationHandler {
         stack.set(DataComponentTypes.MUTATION_COMPONENT_TYPE, new MutationComponent(ImmutableMap.copyOf(pseudoMutmap)));
 
         mutation.ability().onCraft(stack);
+
+        updateMap();
     }
 
     public void remove(Mutations mutation) {
@@ -72,6 +76,8 @@ public class MutationHandler {
         stack.set(DataComponentTypes.MUTATION_COMPONENT_TYPE, new MutationComponent(ImmutableMap.copyOf(pseudo)));
 
         mutation.ability().decraft(stack);
+
+        updateMap();
     }
 
     public void configure(Mutations.Parameters parameter, int value) {
@@ -88,6 +94,8 @@ public class MutationHandler {
 
         pseudoMutmap.put(mutation.key(), new MutationComponent.ConfigurationComponent(ImmutableMap.copyOf(pseudoConfmap)));
         stack.set(DataComponentTypes.MUTATION_COMPONENT_TYPE, new MutationComponent(ImmutableMap.copyOf(pseudoMutmap)));
+
+        updateMap();
     }
 
     public void nextConfval(Mutations.Parameters parameter, Level level) {
@@ -109,6 +117,8 @@ public class MutationHandler {
         stack.set(DataComponentTypes.MUTATION_COMPONENT_TYPE, new MutationComponent(ImmutableMap.copyOf(pseudoMutmap)));
 
         mutation.ability().onUpdate(stack, level);
+
+        updateMap();
     }
 
     public void nextConfVal(String key, Level level) {
@@ -134,6 +144,8 @@ public class MutationHandler {
         stack.set(DataComponentTypes.MUTATION_COMPONENT_TYPE, new MutationComponent(ImmutableMap.copyOf(pseudoMutmap)));
 
         mutation.ability().onUpdate(stack, level);
+
+        updateMap();
     }
 
     public void prevConfigVal(String key, Level level) {
@@ -159,6 +171,8 @@ public class MutationHandler {
         stack.set(DataComponentTypes.MUTATION_COMPONENT_TYPE, new MutationComponent(ImmutableMap.copyOf(pseudoMutmap)));
 
         mutation.ability().onUpdate(stack, level);
+
+        updateMap();
     }
 
     public void resetConfigVal(String key, Level level) {
@@ -193,6 +207,8 @@ public class MutationHandler {
 
         int newKillsNumber = getKills() + 1;
         stack.set(DataComponentTypes.VORACITY_COMPONENT_TYPE, newKillsNumber);
+
+        updateMap();
     }
 
     public ItemStack getStack() {
@@ -238,5 +254,9 @@ public class MutationHandler {
         );
 
         return muts;
+    }
+
+    public void updateMap() {
+        this.mutmap = stack.get(DataComponentTypes.MUTATION_COMPONENT_TYPE).mutmap();
     }
 }

@@ -2,7 +2,7 @@
   "name": "Resonant Rending",
   "icon": "minecraft:ghast_tear",
   "category": "ravenousmaw:mutations",
-  "sortnum": 6,
+  "sortnum": 7,
   "pages": [
     {
       "type": "patchouli:spotlight",

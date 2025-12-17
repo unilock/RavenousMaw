@@ -2,7 +2,7 @@
   "name": "Tendril Lash",
   "icon": "minecraft:angler_pottery_sherd",
   "category": "ravenousmaw:mutations",
-  "sortnum": 5,
+  "sortnum": 6,
   "pages": [
     {
       "type": "patchouli:spotlight",

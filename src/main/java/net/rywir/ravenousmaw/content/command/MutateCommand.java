@@ -19,6 +19,9 @@ public class MutateCommand {
             Commands.literal("ravenousmaw")
                 .then(Commands.literal("mutate")
                     .requires(source -> source.hasPermission(2))
+                    .then(Commands.literal("all")
+                        .executes(MutateCommand::executeAll)
+                    )
                     .then(Commands.argument("mutation", StringArgumentType.string())
                         .suggests((context, builder) -> {
                             for (var mut : Mutations.values()) {
@@ -47,6 +50,24 @@ public class MutateCommand {
         Mutations target = Mutations.byKey(key);
 
         handler.addWithCraft(target);
+
+        return 1;
+    }
+
+    private static int executeAll(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        Player player = context.getSource().getPlayerOrException();
+        ItemStack stack = player.getMainHandItem();
+
+        if (!stack.is(RavenousItemTagsProvider.MAW)) {
+            player.sendSystemMessage(Component.translatable("warning.ravenousmaw.no_maw"));
+            return 0;
+        }
+
+        MutationHandler handler = new MutationHandler(stack);
+
+        for (Mutations mut : Mutations.values()) {
+            handler.addWithCraft(mut);
+        }
 
         return 1;
     }

@@ -10,6 +10,7 @@
   "mutation.ravenousmaw.tectonic_bite": "Tectonic Bite",
   "mutation.ravenousmaw.combustive_enzyme": "Combustive Enzyme",
   "mutation.ravenousmaw.insatiable_voracity": "Insatiable Voracity",
+  "mutation.ravenousmaw.iris_out": "Iris Out",
   "mutation.ravenousmaw.undying_flesh": "Undying Flesh",
   "mutation.ravenousmaw.symbiotic_aid": "Symbiotic Aid",
   "mutation.ravenousmaw.tendril_lash": "Tendril Lash",
@@ -17,6 +18,25 @@
   "mutation.ravenousmaw.arcane_hypertrophy": "Arcane Hypertrophy",
   "mutation.ravenousmaw.indomitable_will": "Indomitable Will",
   "mutation.ravenousmaw.adaptive_shift": "Adaptive Shift",
+
+  "parameter.ravenousmaw.tectonic_area": "Tectonic Area",
+  "parameter.ravenousmaw.symbiotic_immunity": "Symbiotic Immunity",
+  "parameter.ravenousmaw.silky_fang": "Silky Fang",
+  "parameter.ravenousmaw.binge_eater": "Binge Eater",
+  "parameter.ravenousmaw.excavation_haste": "Excavation Haste",
+  "parameter.ravenousmaw.dexterous_touch": "Dexterous Touch",
+  "parameter.ravenousmaw.living_projectile": "Living Projectile",
+  "parameter.ravenousmaw.reckless_devourer": "Reckless Devourer",
+  "parameter.ravenousmaw.grim_tracer": "Grim Tracer",
+
+  "description.ravenousmaw.tectonic_area": "Modify digging area size\n§aTectonic Bite",
+  "description.ravenousmaw.symbiotic_immunity": "Toggle harmful effect removal\n§aSymbiotic Aid",
+  "description.ravenousmaw.silky_fang": "Toggle Silk Touch\n§aAdaptive Shift",
+  "description.ravenousmaw.excavation_haste": "Modify digging speed\n§aAdaptive Shift",
+  "description.ravenousmaw.dexterous_touch": "Toggle wrench mode\n",
+  "description.ravenousmaw.living_projectile": "Toggle ranged weapon mode\n§aIris Out",
+  "description.ravenousmaw.reckless_devourer": "Increase damage by sacrificing loots\n§aAdaptive Shift",
+  "description.ravenousmaw.grim_tracer": "Toggle homing projectiles when fully charged\n§aIris Out",
 
   "creativetab.ravenousmaw.ravenous_tab": "Ravenous Maw",
 
@@ -68,23 +88,5 @@
   "dialogue.ravenousmaw.latent": "RmVlZCBtZSBtb3J0YWwh",
   "dialogue.ravenousmaw.advanced": "From a builder, teach bWF3 speak-hows!",
   "dialogue.ravenousmaw.noble": "I have finally become able to communicate with you.",
-  "dialogue.ravenousmaw.excelsior": "When will you gonna feed me?",
-
-  "parameter.ravenousmaw.tectonic_area": "Tectonic Area",
-  "parameter.ravenousmaw.symbiotic_immunity": "Symbiotic Immunity",
-  "parameter.ravenousmaw.silky_fang": "Silky Fang",
-  "parameter.ravenousmaw.binge_eater": "Binge Eater",
-  "parameter.ravenousmaw.excavation_haste": "Excavation Haste",
-  "parameter.ravenousmaw.dexterous_touch": "Dexterous Touch",
-  "parameter.ravenousmaw.living_projectile": "Living Projectile",
-  "parameter.ravenousmaw.blind_scavenger": "Blind Scavenger",
-
-  "description.ravenousmaw.tectonic_area": "Digging area size",
-  "description.ravenousmaw.symbiotic_immunity": "Remove harmful effects?",
-  "description.ravenousmaw.silky_fang": "Shift to Silk Touch?",
-  "description.ravenousmaw.excavation_haste": "Digging speed modifier",
-  "description.ravenousmaw.dexterous_touch": "Wrench mode active?",
-  "description.ravenousmaw.living_projectile": "Homing projectiles? (slower)",
-  "description.ravenousmaw.blind_scavenger": "Exchange damage with loots?"
-
+  "dialogue.ravenousmaw.excelsior": "When will you gonna feed me?"
 }

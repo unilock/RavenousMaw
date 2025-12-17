@@ -1,10 +1,13 @@
 package net.rywir.ravenousmaw.system.interfaces;
 
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.rywir.ravenousmaw.registry.Stages;
+import net.rywir.ravenousmaw.system.AbilityDispatcher;
 import net.rywir.ravenousmaw.system.MutationHandler;
 
 public interface IMutationAbility {
@@ -13,6 +16,10 @@ public interface IMutationAbility {
     default float getAttackDamageBonus(MutationHandler handler, ItemStack stack, LivingEntity target, Level level, Stages stage) {
         return 0.0F;
     }
+
+    default void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeCharged, MutationHandler handler, Stages stage, AbilityDispatcher dispatcher) {}
+
+    default InteractionResultHolder<ItemStack> use(MutationHandler mutationHandler, ItemStack stack, Level level, Player player, InteractionHand hand) { return InteractionResultHolder.pass(stack); }
 
     default void onAttack(ItemStack stack, LivingEntity target, Level level) {}
 

@@ -2,7 +2,7 @@
   "name": "Arcane Hypertrophy",
   "icon": "minecraft:torchflower_seeds",
   "category": "ravenousmaw:mutations",
-  "sortnum": 7,
+  "sortnum": 8,
   "pages": [
     {
       "type": "patchouli:spotlight",

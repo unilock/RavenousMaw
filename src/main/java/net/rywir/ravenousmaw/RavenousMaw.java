@@ -2,6 +2,7 @@ package net.rywir.ravenousmaw;
 
 import net.neoforged.bus.api.Event;
 import net.neoforged.fml.config.ModConfig;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.MovementInputUpdateEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RenderHighlightEvent;
@@ -15,6 +16,8 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.rywir.ravenousmaw.content.entity.model.IrisBulletModel;
+import net.rywir.ravenousmaw.content.entity.renderer.IrisBulletRenderer;
 import net.rywir.ravenousmaw.content.event.*;
 import net.rywir.ravenousmaw.content.gui.menu.ConfigurationMenu;
 import net.rywir.ravenousmaw.content.gui.screen.ConfigurationScreen;
@@ -79,6 +82,7 @@ public class RavenousMaw {
         RavenousRecipes.register(modEventBus);
 
         RavenousMobEffects.register(modEventBus);
+        RavenousEntityTypes.register(modEventBus);
 
         modEventBus.addListener(this::addCreative);
 
@@ -102,6 +106,19 @@ public class RavenousMaw {
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(MenuTypes.MUTATION_MATRIX_MENU.get(), MutationMatrixScreen::new);
             event.register(MenuTypes.CONFIGURATION_MENU.get(), ConfigurationScreen::new);
+        }
+
+        @SubscribeEvent
+        public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+            event.registerLayerDefinition(IrisBulletModel.LAYER_LOCATION, IrisBulletModel::createBodyLayer);
+        }
+
+        @SubscribeEvent
+        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerEntityRenderer(
+                RavenousEntityTypes.IRIS_BULLET_ENTITY_TYPE.get(),
+                IrisBulletRenderer::new
+            );
         }
     }
 }

@@ -23,7 +23,7 @@ public class AdaptiveShift implements IMutationAbility {
             return standard;
         }
 
-        int isDamageMultiplierActivated = mutationHandler.getConfigVal(Mutations.Parameters.BLIND_SCAVENGER);
+        int isDamageMultiplierActivated = mutationHandler.getConfigVal(Mutations.Parameters.RECKLESS_DEVOURER);
 
         if (isDamageMultiplierActivated == 1) {
             return multiplier;

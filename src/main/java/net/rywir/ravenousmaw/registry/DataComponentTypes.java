@@ -25,6 +25,12 @@ public class DataComponentTypes {
             .networkSynchronized(ByteBufCodecs.VAR_INT)
             .build());
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> CHARGING_SOUND_TYPE = DATA_COMPONENT_TYPES.register("charging_sound",
+        () -> DataComponentType.<Boolean>builder()
+            .persistent(Codec.BOOL)
+            .networkSynchronized(ByteBufCodecs.BOOL)
+            .build());
+
     public static void register(IEventBus eventBus) {
         DATA_COMPONENT_TYPES.register(eventBus);
     }

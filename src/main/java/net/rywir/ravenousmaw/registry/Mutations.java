@@ -17,13 +17,14 @@ public enum Mutations {
     TECTONIC_BITE(Component.translatable("mutation.ravenousmaw.tectonic_bite"), Stages.LATENT, Items.STICKY_PISTON, Set.of(), new TectonicBite(), List.of(Parameters.TECTONIC_AREA)),
     COMBUSTIVE_ENZYME(Component.translatable("mutation.ravenousmaw.combustive_enzyme"), Stages.ADVANCED, Items.MAGMA_CREAM, Set.of(), new CombustiveEnzyme(), List.of()),
     INSATIABLE_VORACITY(Component.translatable("mutation.ravenousmaw.insatiable_voracity"), Stages.ADVANCED, Items.ENCHANTED_GOLDEN_APPLE, Set.of(), new InsatiableVoracity(), List.of()),
+    IRIS_OUT(Component.translatable("mutation.ravenousmaw.iris_out"), Stages.ADVANCED, Items.BREEZE_ROD, Set.of(), new IrisOut(), List.of(Parameters.LIVING_PROJECTILE, Parameters.GRIM_TRACER)),
     UNDYING_FLESH(Component.translatable("mutation.ravenousmaw.undying_flesh"), Stages.NOBLE, Items.TOTEM_OF_UNDYING, Set.of(AbilityTypes.ON_CRAFT), new UndyingFlesh(), List.of()),
     SYMBIOTIC_AID(Component.translatable("mutation.ravenousmaw.symbiotic_aid"), Stages.NOBLE, Items.PUFFERFISH, Set.of(), new SymbioticAid(), List.of(Parameters.SYMBIOTIC_IMMUNITY)),
     TENDRIL_LASH(Component.translatable("mutation.ravenousmaw.tendril_lash"), Stages.NOBLE, Items.ANGLER_POTTERY_SHERD, Set.of(AbilityTypes.ON_CRAFT), new TendrilLash(), List.of()),
     RESONANT_RENDING(Component.translatable("mutation.ravenousmaw.resonant_rending"), Stages.EXCELSIOR, Items.GHAST_TEAR, Set.of(), new ResonantRending(), List.of()),
     ARCANE_HYPERTROPHY(Component.translatable("mutation.ravenousmaw.arcane_hypertrophy"), Stages.EXCELSIOR, Items.TORCHFLOWER_SEEDS, Set.of(), new ArcaneHypertrophy(), List.of()),
     INDOMITABLE_WILL(Component.translatable("mutation.ravenousmaw.indomitable_will"), Stages.EXCELSIOR, Items.DRAGON_BREATH, Set.of(), new IndomitableWill(), List.of()),
-    ADAPTIVE_SHIFT(Component.translatable("mutation.ravenousmaw.adaptive_shift"), Stages.EXCELSIOR, Items.NETHER_STAR, Set.of(AbilityTypes.ON_CRAFT), new AdaptiveShift(), List.of(Parameters.SILKY_FANG, Parameters.BLIND_SCAVENGER, Parameters.EXCAVATION_HASTE));
+    ADAPTIVE_SHIFT(Component.translatable("mutation.ravenousmaw.adaptive_shift"), Stages.EXCELSIOR, Items.NETHER_STAR, Set.of(AbilityTypes.ON_CRAFT), new AdaptiveShift(), List.of(Parameters.SILKY_FANG, Parameters.RECKLESS_DEVOURER, Parameters.EXCAVATION_HASTE));
 
     private final Component title;
     private final String key;
@@ -141,7 +142,8 @@ public enum Mutations {
         EXCAVATION_HASTE(Component.translatable("parameter.ravenousmaw.excavation_haste"), Type.VALUE, Component.translatable("description.ravenousmaw.excavation_haste"), CircularList.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)),
         DEXTEROUS_TOUCH(Component.translatable("parameter.ravenousmaw.dexterous_touch"), Type.TOGGLE, Component.translatable("description.ravenousmaw.dexterous_touch"), CircularList.of(0, 1)),
         LIVING_PROJECTILE(Component.translatable("parameter.ravenousmaw.living_projectile"), Type.TOGGLE, Component.translatable("description.ravenousmaw.living_projectile"), CircularList.of(0, 1)),
-        BLIND_SCAVENGER(Component.translatable("parameter.ravenousmaw.blind_scavenger"), Type.TOGGLE, Component.translatable("description.ravenousmaw.blind_scavenger"), CircularList.of(0, 1));
+        GRIM_TRACER(Component.translatable("parameter.ravenousmaw.grim_tracer"), Type.TOGGLE, Component.translatable("description.ravenousmaw.grim_tracer"), CircularList.of(0, 1)),
+        RECKLESS_DEVOURER(Component.translatable("parameter.ravenousmaw.reckless_devourer"), Type.TOGGLE, Component.translatable("description.ravenousmaw.reckless_devourer"), CircularList.of(0, 1));
 
         private final String key;
         private final Component title;

@@ -1,5 +1,7 @@
 package net.rywir.ravenousmaw.system;
 
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -8,12 +10,30 @@ import net.rywir.ravenousmaw.RavenousMaw;
 import net.rywir.ravenousmaw.registry.Mutations;
 import net.rywir.ravenousmaw.registry.Stages;
 import net.rywir.ravenousmaw.system.ability.CombustiveEnzyme;
+import net.rywir.ravenousmaw.system.ability.IrisOut;
 import net.rywir.ravenousmaw.system.interfaces.IMutationAbility;
 
 public class AbilityDispatcher implements IMutationAbility {
     @Override
     public void onAttack(ItemStack stack, LivingEntity target, Level level) {
         Mutations.COMBUSTIVE_ENZYME.ability().onAttack(stack, target, level);
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(MutationHandler mutationHandler, ItemStack stack, Level level, Player player, InteractionHand hand) {
+        boolean hasIrisOut = mutationHandler.has(Mutations.IRIS_OUT);
+        int isActive = mutationHandler.getConfigVal(Mutations.Parameters.LIVING_PROJECTILE);
+
+        if (hasIrisOut || isActive == 1) {
+            return Mutations.IRIS_OUT.ability().use(mutationHandler, stack, level, player, hand);
+        } else {
+            return InteractionResultHolder.fail(stack);
+        }
+    }
+
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeCharged, MutationHandler handler, Stages stage, AbilityDispatcher dispatcher) {
+        Mutations.IRIS_OUT.ability().releaseUsing(stack, level, entity, timeCharged, handler, stage, dispatcher);
     }
 
     @Override

@@ -2,7 +2,7 @@
   "name": "Symbiotic Aid",
   "icon": "minecraft:pufferfish",
   "category": "ravenousmaw:mutations",
-  "sortnum": 4,
+  "sortnum": 5,
   "pages": [
     {
       "type": "patchouli:spotlight",

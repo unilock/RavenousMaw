@@ -2,7 +2,7 @@
   "name": "Undying Flesh",
   "icon": "minecraft:totem_of_undying",
   "category": "ravenousmaw:mutations",
-  "sortnum": 3,
+  "sortnum": 4,
   "pages": [
     {
       "type": "patchouli:spotlight",

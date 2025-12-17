@@ -2,7 +2,7 @@
   "name": "Adaptive Shift",
   "icon": "minecraft:nether_star",
   "category": "ravenousmaw:mutations",
-  "sortnum": 9,
+  "sortnum": 10,
   "pages": [
     {
       "type": "patchouli:spotlight",

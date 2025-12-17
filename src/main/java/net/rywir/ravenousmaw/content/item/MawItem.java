@@ -7,6 +7,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -24,10 +25,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.item.context.UseOnContext;
@@ -60,7 +58,9 @@ import java.util.function.Supplier;
 
 public class MawItem extends Item {
     public final Stages stage;
+    private static final int USE_DURATION = 72000;
     private static final Component DURABILITY_WARNING = Component.translatable("ravenousmaw.maw_threshold_message");
+    private static final int FULL_CHARGE_TICKS = 20;
 
     public MawItem(Stages stage) {
         super(createProperties(stage));
@@ -178,12 +178,44 @@ public class MawItem extends Item {
         boolean isShiftDown = player.isShiftKeyDown();
 
         if (!isShiftDown) {
-            return InteractionResultHolder.fail(stack);
+            MutationHandler handler = new MutationHandler(stack);
+
+            AbilityDispatcher dispatcher = new AbilityDispatcher();
+            return dispatcher.use(handler, player.getItemInHand(hand), level, player, hand);
         }
 
         callMenu(serverPlayer, player, stack);
 
         return InteractionResultHolder.success(stack);
+    }
+
+    @Override
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity entity, int timeLeft) {
+        AbilityDispatcher dispatcher = new AbilityDispatcher();
+        MutationHandler handler = new MutationHandler(stack);
+        StageHandler stageHandler = new StageHandler(stack);
+
+        dispatcher.releaseUsing(stack, level, entity, timeLeft, handler, stageHandler.getStage(), dispatcher);
+        stack.set(DataComponentTypes.CHARGING_SOUND_TYPE, false);
+    }
+
+    @Override
+    public int getUseDuration(ItemStack stack, LivingEntity entity) {
+        MutationHandler handler = new MutationHandler(stack);
+        boolean hasIrisOut = handler.has(Mutations.IRIS_OUT);
+
+        if (!hasIrisOut) return super.getUseDuration(stack, entity);
+
+        int isActive = handler.getConfigVal(Mutations.Parameters.LIVING_PROJECTILE);
+
+        if (isActive == 0) return super.getUseDuration(stack, entity);
+
+        return USE_DURATION;
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.BOW;
     }
 
     @Override
@@ -263,6 +295,29 @@ public class MawItem extends Item {
 
         return InteractionResult.PASS;
     }
+
+    @Override
+    public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int remainingUseDuration) {
+        if (!(entity instanceof ServerPlayer player)) return;
+
+        int used = stack.getUseDuration(entity) - remainingUseDuration;
+
+        boolean alreadyPlayed = stack.get(DataComponentTypes.CHARGING_SOUND_TYPE);
+
+        if (used >= FULL_CHARGE_TICKS && !alreadyPlayed) {
+            stack.set(DataComponentTypes.CHARGING_SOUND_TYPE, true);
+
+            level.playSound(
+                null,
+                player.getX(), player.getY(), player.getZ(),
+                SoundEvents.BEACON_POWER_SELECT,
+                SoundSource.PLAYERS,
+                0.6F,
+                1.2F
+            );
+        }
+    }
+
 
     @Override
     public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
@@ -439,15 +494,17 @@ public class MawItem extends Item {
             CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, stack);
         }
 
-        if(level.isClientSide() || player != null) {
+        if (player == null) {
             return InteractionResult.PASS;
         }
 
-        level.setBlock(pos, newState, 11);
-        level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
-        stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+        if (!level.isClientSide()) {
+            level.setBlock(pos, newState, 11);
+            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
+            stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+        }
 
-        return InteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.sidedSuccess(level.isClientSide());
     }
 
     public static Item.Properties createProperties(Stages stage) {
